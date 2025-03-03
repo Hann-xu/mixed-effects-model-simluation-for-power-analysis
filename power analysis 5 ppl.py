@@ -13,6 +13,7 @@ def compute_power_analysis_fixed(df_vt, n_stimuli, n_participants_per_stimulus):
                           df_vt[df_vt["condition"].isin([1, 2])].groupby("condition")["vt"].transform("mean"))
     sigma_P_T2_12 = np.var(df_vt[df_vt["condition"].isin([1, 2])].groupby(["stimulus", "condition"])["vt"].mean() - 
                             df_vt[df_vt["condition"].isin([1, 2])].groupby("stimulus")["vt"].mean())
+    sigma_T2_12 = np.var(df_vt[df_vt["condition"].isin([1, 2])].groupby("stimulus")["vt"].mean())
     sigma_P_T_C2_12 = np.var(df_vt[df_vt["condition"] == 2].groupby("stimulus")["vt"].mean() - 
                           df_vt[df_vt["condition"].isin([1, 2])].groupby("stimulus")["vt"].mean())
     sigma_P2_12 = np.var(df_vt[df_vt["condition"].isin([1, 2])].groupby("stimulus")["vt"].mean())
@@ -25,6 +26,7 @@ def compute_power_analysis_fixed(df_vt, n_stimuli, n_participants_per_stimulus):
                           df_vt[df_vt["condition"].isin([1, 3])].groupby("condition")["vt"].transform("mean"))
     sigma_P_T2_13 = np.var(df_vt[df_vt["condition"].isin([1, 3])].groupby(["stimulus", "condition"])["vt"].mean() - 
                             df_vt[df_vt["condition"].isin([1, 3])].groupby("stimulus")["vt"].mean())
+    sigma_T2_13 = np.var(df_vt[df_vt["condition"].isin([1, 3])].groupby("stimulus")["vt"].mean())
     sigma_P_T_C2_13 = np.var(df_vt[df_vt["condition"] == 3].groupby("stimulus")["vt"].mean() - 
                               df_vt[df_vt["condition"].isin([1, 3])].groupby("stimulus")["vt"].mean())  # Extra variance for Condition 3
     sigma_P2_13 = np.var(df_vt[df_vt["condition"].isin([1, 3])].groupby("stimulus")["vt"].mean())
@@ -37,6 +39,7 @@ def compute_power_analysis_fixed(df_vt, n_stimuli, n_participants_per_stimulus):
                           df_vt[df_vt["condition"].isin([2, 3])].groupby("condition")["vt"].transform("mean"))
     sigma_P_T2_23 = np.var(df_vt[df_vt["condition"].isin([2, 3])].groupby(["stimulus", "condition"])["vt"].mean() - 
                             df_vt[df_vt["condition"].isin([2, 3])].groupby("stimulus")["vt"].mean())
+    sigma_T2_23 = np.var(df_vt[df_vt["condition"].isin([2, 3])].groupby("stimulus")["vt"].mean())
     sigma_P_T_C2_23 = np.var(df_vt[df_vt["condition"] == 3].groupby("stimulus")["vt"].mean() - 
                               df_vt[df_vt["condition"].isin([2, 3])].groupby("stimulus")["vt"].mean())  # Extra variance for Condition 3
     sigma_P2_23 = np.var(df_vt[df_vt["condition"].isin([2, 3])].groupby("stimulus")["vt"].mean())
@@ -80,7 +83,7 @@ def compute_power_analysis_fixed(df_vt, n_stimuli, n_participants_per_stimulus):
     # Calculate standardized effect sizes
     effect_size_12 = d_12 / np.sqrt(
         sigma_P2_12 + sigma_P_C2_12 + 
-        0 +  # σ²ᴛ (not explicitly calculated in your code)
+        sigma_T2_12 +  # σ²ᴛ (not explicitly calculated in your code in last version)
         sigma_T_C2_12 + 
         sigma_E2_12 + 
         sigma_P_T2_12 + 
@@ -89,7 +92,7 @@ def compute_power_analysis_fixed(df_vt, n_stimuli, n_participants_per_stimulus):
 
     effect_size_13 = d_13 / np.sqrt(
         sigma_P2_13 + sigma_P_C2_13 + 
-        0 +  # σ²ᴛ (not explicitly calculated in your code)
+        sigma_T2_13 +  # σ²ᴛ (not explicitly calculated in your code)
         sigma_T_C2_13 + 
         sigma_E2_13 + 
         sigma_P_T2_13 + 
@@ -98,7 +101,7 @@ def compute_power_analysis_fixed(df_vt, n_stimuli, n_participants_per_stimulus):
 
     effect_size_23 = d_23 / np.sqrt(
         sigma_P2_23 + sigma_P_C2_23 + 
-        0 +  # σ²ᴛ (not explicitly calculated in your code)
+        sigma_T2_23 +  # σ²ᴛ (not explicitly calculated in your code)
         sigma_T_C2_23 + 
         sigma_E2_23 + 
         sigma_P_T2_23 + 
