@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 
 # Function to simulate VT dataset
-def simulate_vt_data(n_stimuli, target_effect_size=0.5, seed=42):
+def simulate_vt_data(n_stimuli, target_effect_size=0.1, seed=42):
     np.random.seed(seed)  # Ensure reproducibility
     n_conditions = 3  # Three conditions (Control, Human-AI, AI-Human)
     n_total_participants = n_stimuli * 3 * n_conditions  # 3 participants per stimulus
@@ -70,10 +70,14 @@ def simulate_vt_data(n_stimuli, target_effect_size=0.5, seed=42):
 df_vt_60stim_5part = simulate_vt_data(n_stimuli=60)
 df_vt_50stim_5part = simulate_vt_data(n_stimuli=50)
 df_vt_40stim_5part = simulate_vt_data(n_stimuli=40)
+df_vt_30stim_5part = simulate_vt_data(n_stimuli=30)
+df_vt_20stim_5part = simulate_vt_data(n_stimuli=20)
 
 # Save datasets as CSV files
 df_vt_60stim_5part.to_csv("3ppl_simulated_vt_60stim_5part.csv", index=False)
 df_vt_50stim_5part.to_csv("3ppl_simulated_vt_50stim_5part.csv", index=False)
 df_vt_40stim_5part.to_csv("3ppl_simulated_vt_40stim_5part.csv", index=False)
+df_vt_30stim_5part.to_csv("3ppl_simulated_vt_30stim_5part.csv", index=False)
+df_vt_20stim_5part.to_csv("3ppl_simulated_vt_20stim_5part.csv", index=False)
 
 print("✅ Datasets generated with **corrected effect size (0.4) between conditions!**")

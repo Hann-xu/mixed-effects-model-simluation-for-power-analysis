@@ -144,31 +144,30 @@ def compute_power_analysis_fixed(df_vt, n_stimuli, n_participants_per_stimulus):
 
     # Calculate degrees of freedom using Satterthwaite approximation for Condition 1 vs. 2
     E_12 = sigma_E2_12 + sigma_P_T2_12 + sigma_P_T_C2_12  # Error components
-    p = n_participants_per_stimulus     # Number of participants per stimulus
-    q = n_stimuli                      # Number of stimuli
+    p = 15 
 
-    numerator_12 = (E_12 + q*(sigma_P2_12 + sigma_P_C2_12) + p*sigma_T_C2_12/2)**2
-    denominator_12 = ((E_12)**2/((p-2)*(q-1)) + 
-                    (E_12 + q*(sigma_P2_12 + sigma_P_C2_12))**2/(p-2) + 
-                    (E_12 + p*sigma_T_C2_12/2)**2/(q-1))
+    numerator_12 = (E_12 + n_stimuli*(sigma_P2_12 + sigma_P_C2_12) + p*sigma_T_C2_12/2)**2
+    denominator_12 = ((E_12)**2/((p-2)*(n_stimuli-1)) + 
+                    (E_12 + n_stimuli*(sigma_P2_12 + sigma_P_C2_12))**2/(p-2) + 
+                    (E_12 + p*sigma_T_C2_12/2)**2/(n_stimuli-1))
     df_12 = numerator_12 / denominator_12
 
     # Calculate degrees of freedom for Condition 1 vs. 3
     E_13 = sigma_E2_13 + sigma_P_T2_13 + sigma_P_T_C2_13  # Error components
 
-    numerator_13 = (E_13 + q*(sigma_P2_13 + sigma_P_C2_13) + p*sigma_T_C2_13/2)**2
-    denominator_13 = ((E_13)**2/((p-2)*(q-1)) + 
-                    (E_13 + q*(sigma_P2_13 + sigma_P_C2_13))**2/(p-2) + 
-                    (E_13 + p*sigma_T_C2_13/2)**2/(q-1))
+    numerator_13 = (E_13 + n_stimuli*(sigma_P2_13 + sigma_P_C2_13) + p*sigma_T_C2_13/2)**2
+    denominator_13 = ((E_13)**2/((p-2)*(n_stimuli-1)) + 
+                    (E_13 + n_stimuli*(sigma_P2_13 + sigma_P_C2_13))**2/(p-2) + 
+                    (E_13 + p*sigma_T_C2_13/2)**2/(n_stimuli-1))
     df_13 = numerator_13 / denominator_13
 
     # Calculate degrees of freedom for Condition 2 vs. 3
     E_23 = sigma_E2_23 + sigma_P_T2_23 + sigma_P_T_C2_23  # Error components
 
-    numerator_23 = (E_23 + q*(sigma_P2_23 + sigma_P_C2_23) + p*sigma_T_C2_23/2)**2
-    denominator_23 = ((E_23)**2/((p-2)*(q-1)) + 
-                    (E_23 + q*(sigma_P2_23 + sigma_P_C2_23))**2/(p-2) + 
-                    (E_23 + p*sigma_T_C2_23/2)**2/(q-1))
+    numerator_23 = (E_23 + n_stimuli*(sigma_P2_23 + sigma_P_C2_23) + p*sigma_T_C2_23/2)**2
+    denominator_23 = ((E_23)**2/((p-2)*(n_stimuli-1)) + 
+                    (E_23 + n_stimuli*(sigma_P2_23 + sigma_P_C2_23))**2/(p-2) + 
+                    (E_23 + p*sigma_T_C2_23/2)**2/(n_stimuli-1))
     df_23 = numerator_23 / denominator_23
 
     # Print the calculated degrees of freedom
@@ -184,24 +183,26 @@ def compute_power_analysis_fixed(df_vt, n_stimuli, n_participants_per_stimulus):
     t_critical_23 = stats.t.ppf(1 - 0.05 / 2, df_23)
 
     # Compute power using the noncentral t-distribution (corrected)
-    power_12 = 1 - nct.cdf(t_critical_12, df_12, abs(lambda_12))
-    power_13 = 1 - nct.cdf(t_critical_13, df_13, abs(lambda_13))
-    power_23 = 1 - nct.cdf(t_critical_23, df_23, abs(lambda_23))
+    power_12 = 1- nct.cdf(t_critical_12, df_12, abs(lambda_12))
+    power_13 = 1- nct.cdf(t_critical_13, df_13, abs(lambda_13))
+    power_23 = 1- nct.cdf(t_critical_23, df_23, abs(lambda_23))
 
     # Print results
     print(f"Power Analysis for {n_stimuli} Stimuli, {n_participants_per_stimulus} Participants/Stimulus")
     print(f"Condition 1 vs. 2 - Power: {power_12:.3f}")
     print(f"Condition 1 vs. 3 - Power: {power_13:.3f}")
+    print(f"Condition 2 vs. 3 - Power: {power_23:.3f}")
     print("-" * 50)
 
     return power_12, power_13, power_23
 
 # Load the datasets if already generated
+
 df_vt_60stim_5part = pd.read_csv("simulated_vt_60stim_5part.csv")
-df_vt_50stim_5part = pd.read_csv("simulated_vt_50stim_5part.csv")
-df_vt_40stim_5part = pd.read_csv("simulated_vt_40stim_5part.csv")
+
 
 # Compute power analysis for each dataset (fixed version)
+
 compute_power_analysis_fixed(df_vt_60stim_5part, n_stimuli=60, n_participants_per_stimulus=5)
-compute_power_analysis_fixed(df_vt_50stim_5part, n_stimuli=50, n_participants_per_stimulus=5)
-compute_power_analysis_fixed(df_vt_40stim_5part, n_stimuli=40, n_participants_per_stimulus=5)
+
+
