@@ -67,6 +67,13 @@ def simulate_vt_data(n_stimuli, target_effect_size=0.4, seed=42):
     return df_vt
 
 # Generate datasets for 60, 50, 40, 30, 20 stimuli
+df_vt_130stim_5part = simulate_vt_data(n_stimuli=130)
+df_vt_120stim_5part = simulate_vt_data(n_stimuli=120)
+df_vt_110stim_5part = simulate_vt_data(n_stimuli=110)
+df_vt_100stim_5part = simulate_vt_data(n_stimuli=100)
+df_vt_90stim_5part = simulate_vt_data(n_stimuli=90)
+df_vt_80stim_5part = simulate_vt_data(n_stimuli=80)
+df_vt_70stim_5part = simulate_vt_data(n_stimuli=70)
 df_vt_60stim_5part = simulate_vt_data(n_stimuli=60)
 df_vt_50stim_5part = simulate_vt_data(n_stimuli=50)
 df_vt_40stim_5part = simulate_vt_data(n_stimuli=40)
@@ -76,6 +83,13 @@ df_vt_10stim_5part = simulate_vt_data(n_stimuli=10)
 df_vt_5stim_5part = simulate_vt_data(n_stimuli=5)
 
 # Save datasets as CSV files
+df_vt_130stim_5part.to_csv("main code: 5ppl per stimulus/simulated_vt_130stim_5part.csv", index=False)
+df_vt_120stim_5part.to_csv("main code: 5ppl per stimulus/simulated_vt_120stim_5part.csv", index=False)
+df_vt_110stim_5part.to_csv("main code: 5ppl per stimulus/simulated_vt_110stim_5part.csv", index=False)
+df_vt_100stim_5part.to_csv("main code: 5ppl per stimulus/simulated_vt_100stim_5part.csv", index=False)
+df_vt_90stim_5part.to_csv("main code: 5ppl per stimulus/simulated_vt_90stim_5part.csv", index=False)
+df_vt_80stim_5part.to_csv("main code: 5ppl per stimulus/simulated_vt_80stim_5part.csv", index=False)
+df_vt_70stim_5part.to_csv("main code: 5ppl per stimulus/simulated_vt_70stim_5part.csv", index=False)
 df_vt_60stim_5part.to_csv("main code: 5ppl per stimulus/simulated_vt_60stim_5part.csv", index=False)
 df_vt_50stim_5part.to_csv("main code: 5ppl per stimulus/simulated_vt_50stim_5part.csv", index=False)
 df_vt_40stim_5part.to_csv("main code: 5ppl per stimulus/simulated_vt_40stim_5part.csv", index=False)

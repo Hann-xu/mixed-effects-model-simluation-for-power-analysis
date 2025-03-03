@@ -204,6 +204,13 @@ df_vt_30stim_5part = pd.read_csv("main code: 5ppl per stimulus/simulated_vt_30st
 df_vt_40stim_5part = pd.read_csv("main code: 5ppl per stimulus/simulated_vt_40stim_5part.csv")
 df_vt_50stim_5part = pd.read_csv("main code: 5ppl per stimulus/simulated_vt_50stim_5part.csv")
 df_vt_60stim_5part = pd.read_csv("main code: 5ppl per stimulus/simulated_vt_60stim_5part.csv")
+df_vt_70stim_5part = pd.read_csv("main code: 5ppl per stimulus/simulated_vt_70stim_5part.csv")
+df_vt_80stim_5part = pd.read_csv("main code: 5ppl per stimulus/simulated_vt_80stim_5part.csv")
+df_vt_90stim_5part = pd.read_csv("main code: 5ppl per stimulus/simulated_vt_90stim_5part.csv")
+df_vt_100stim_5part = pd.read_csv("main code: 5ppl per stimulus/simulated_vt_100stim_5part.csv")
+df_vt_110stim_5part = pd.read_csv("main code: 5ppl per stimulus/simulated_vt_110stim_5part.csv")
+df_vt_120stim_5part = pd.read_csv("main code: 5ppl per stimulus/simulated_vt_120stim_5part.csv")
+df_vt_130stim_5part = pd.read_csv("main code: 5ppl per stimulus/simulated_vt_130stim_5part.csv")
 
 
 # Compute power analysis for each dataset (fixed version)
@@ -214,5 +221,102 @@ compute_power_analysis_fixed(df_vt_30stim_5part, n_stimuli=30, n_participants_pe
 compute_power_analysis_fixed(df_vt_40stim_5part, n_stimuli=40, n_participants_per_stimulus=5)
 compute_power_analysis_fixed(df_vt_50stim_5part, n_stimuli=50, n_participants_per_stimulus=5)
 compute_power_analysis_fixed(df_vt_60stim_5part, n_stimuli=60, n_participants_per_stimulus=5)
+compute_power_analysis_fixed(df_vt_70stim_5part, n_stimuli=70, n_participants_per_stimulus=5)
+compute_power_analysis_fixed(df_vt_80stim_5part, n_stimuli=80, n_participants_per_stimulus=5)
+compute_power_analysis_fixed(df_vt_90stim_5part, n_stimuli=90, n_participants_per_stimulus=5)
+compute_power_analysis_fixed(df_vt_100stim_5part, n_stimuli=100, n_participants_per_stimulus=5)
+compute_power_analysis_fixed(df_vt_110stim_5part, n_stimuli=110, n_participants_per_stimulus=5)
+compute_power_analysis_fixed(df_vt_120stim_5part, n_stimuli=120, n_participants_per_stimulus=5)
+compute_power_analysis_fixed(df_vt_130stim_5part, n_stimuli=130, n_participants_per_stimulus=5)
 
 
+
+# Create empty lists to store the results
+stimuli_counts = [5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130]
+power_12_list = []
+power_13_list = []
+power_23_list = []
+
+# Load the datasets and run the power analysis
+# (This section will collect the results returned by the compute_power_analysis_fixed function)
+power_12, power_13, power_23 = compute_power_analysis_fixed(df_vt_5stim_5part, n_stimuli=5, n_participants_per_stimulus=5)
+power_12_list.append(power_12)
+power_13_list.append(power_13)
+power_23_list.append(power_23)
+
+power_12, power_13, power_23 = compute_power_analysis_fixed(df_vt_10stim_5part, n_stimuli=10, n_participants_per_stimulus=5)
+power_12_list.append(power_12)
+power_13_list.append(power_13)
+power_23_list.append(power_23)
+
+power_12, power_13, power_23 = compute_power_analysis_fixed(df_vt_20stim_5part, n_stimuli=20, n_participants_per_stimulus=5)
+power_12_list.append(power_12)
+power_13_list.append(power_13)
+power_23_list.append(power_23)
+
+power_12, power_13, power_23 = compute_power_analysis_fixed(df_vt_30stim_5part, n_stimuli=30, n_participants_per_stimulus=5)
+power_12_list.append(power_12)
+power_13_list.append(power_13)
+power_23_list.append(power_23)
+
+power_12, power_13, power_23 = compute_power_analysis_fixed(df_vt_40stim_5part, n_stimuli=40, n_participants_per_stimulus=5)
+power_12_list.append(power_12)
+power_13_list.append(power_13)
+power_23_list.append(power_23)
+
+power_12, power_13, power_23 = compute_power_analysis_fixed(df_vt_50stim_5part, n_stimuli=50, n_participants_per_stimulus=5)
+power_12_list.append(power_12)
+power_13_list.append(power_13)
+power_23_list.append(power_23)
+
+power_12, power_13, power_23 = compute_power_analysis_fixed(df_vt_60stim_5part, n_stimuli=60, n_participants_per_stimulus=5)
+power_12_list.append(power_12)
+power_13_list.append(power_13)
+power_23_list.append(power_23)
+
+power_12, power_13, power_23 = compute_power_analysis_fixed(df_vt_70stim_5part, n_stimuli=70, n_participants_per_stimulus=5)
+power_12_list.append(power_12)
+power_13_list.append(power_13)
+power_23_list.append(power_23)
+
+power_12, power_13, power_23 = compute_power_analysis_fixed(df_vt_80stim_5part, n_stimuli=80, n_participants_per_stimulus=5)
+power_12_list.append(power_12)
+power_13_list.append(power_13)
+power_23_list.append(power_23)
+
+power_12, power_13, power_23 = compute_power_analysis_fixed(df_vt_90stim_5part, n_stimuli=90, n_participants_per_stimulus=5)
+power_12_list.append(power_12)
+power_13_list.append(power_13)
+power_23_list.append(power_23)
+
+power_12, power_13, power_23 = compute_power_analysis_fixed(df_vt_100stim_5part, n_stimuli=100, n_participants_per_stimulus=5)
+power_12_list.append(power_12)
+power_13_list.append(power_13)
+power_23_list.append(power_23)
+
+power_12, power_13, power_23 = compute_power_analysis_fixed(df_vt_110stim_5part, n_stimuli=110, n_participants_per_stimulus=5)
+power_12_list.append(power_12)
+power_13_list.append(power_13)
+power_23_list.append(power_23)
+
+power_12, power_13, power_23 = compute_power_analysis_fixed(df_vt_120stim_5part, n_stimuli=120, n_participants_per_stimulus=5)
+power_12_list.append(power_12)
+power_13_list.append(power_13)
+power_23_list.append(power_23)
+
+power_12, power_13, power_23 = compute_power_analysis_fixed(df_vt_130stim_5part, n_stimuli=130, n_participants_per_stimulus=5)
+power_12_list.append(power_12)
+power_13_list.append(power_13)
+power_23_list.append(power_23)
+
+# Create a DataFrame to store the results
+results_df = pd.DataFrame({
+    'n_stimuli': stimuli_counts,
+    'power_12': power_12_list,
+    'power_13': power_13_list,
+    'power_23': power_23_list
+})
+
+# Save the results to a CSV file
+results_df.to_csv('power_analysis_results.csv', index=False)
+print("\nPower analysis results saved to power_analysis_results.csv")
