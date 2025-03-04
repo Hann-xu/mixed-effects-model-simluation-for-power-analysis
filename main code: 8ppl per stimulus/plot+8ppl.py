@@ -19,7 +19,7 @@ plt.axhline(y=0.8, color='black', linestyle='--', alpha=0.7, label='Power = 0.8'
 # Add labels and title
 plt.xlabel('Number of Stimuli', fontsize=14)
 plt.ylabel('Statistical Power', fontsize=14)
-plt.title('Statistical Power as a Function of Number of Stimuli', fontsize=16)
+plt.title('8 participants per stimuli scenario', fontsize=16)
 
 # Customize the plot
 plt.grid(True, alpha=0.3)
