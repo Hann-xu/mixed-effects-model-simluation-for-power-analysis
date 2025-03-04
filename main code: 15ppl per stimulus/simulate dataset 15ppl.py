@@ -5,7 +5,7 @@ import pandas as pd
 def simulate_vt_data(n_stimuli, target_effect_size=0.4, seed=42):
     np.random.seed(seed)  # Ensure reproducibility
     n_conditions = 3  # Three conditions (Control, Human-AI, AI-Human)
-    n_total_participants = n_stimuli * 15 * n_conditions  # 15 participants per stimulus
+    n_total_participants = 30*n_stimuli  # 15 participants per stimulus
 
     # Assign conditions (1: Control, 2: Human-AI, 3: AI-Human)
     conditions = np.repeat(np.arange(1, n_conditions + 1), n_stimuli * 15)

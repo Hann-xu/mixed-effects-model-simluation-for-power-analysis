@@ -144,7 +144,7 @@ def compute_power_analysis_fixed(df_vt, n_stimuli, n_participants_per_stimulus):
 
     # Calculate degrees of freedom using Satterthwaite approximation for Condition 1 vs. 2
     E_12 = sigma_E2_12 + sigma_P_T2_12 + sigma_P_T_C2_12  # Error components
-    p = 45 
+    p = 30*n_stimuli
 
     numerator_12 = (E_12 + n_stimuli*(sigma_P2_12 + sigma_P_C2_12) + p*sigma_T_C2_12/2)**2
     denominator_12 = ((E_12)**2/((p-2)*(n_stimuli-1)) + 
