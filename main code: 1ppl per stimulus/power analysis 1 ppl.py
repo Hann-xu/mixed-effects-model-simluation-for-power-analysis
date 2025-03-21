@@ -183,9 +183,9 @@ def compute_power_analysis_fixed(df_vt, n_stimuli, n_participants_per_stimulus):
     t_critical_23 = stats.t.ppf(1 - 0.05 / 2, df_23)
 
     # Compute power using the noncentral t-distribution (corrected)
-    power_12 = 1- nct.cdf(t_critical_12, df_12, abs(lambda_12))
-    power_13 = 1- nct.cdf(t_critical_13, df_13, abs(lambda_13))
-    power_23 = 1- nct.cdf(t_critical_23, df_23, abs(lambda_23))
+    power_12 = 1- nct.cdf(effect_size_12, df_12, abs(lambda_12))
+    power_13 = 1- nct.cdf(effect_size_13, df_13, abs(lambda_13))
+    power_23 = 1- nct.cdf(effect_size_23, df_23, abs(lambda_23))
 
     # Print results
     print(f"Power Analysis for {n_stimuli} Stimuli, {n_participants_per_stimulus} Participants/Stimulus")
