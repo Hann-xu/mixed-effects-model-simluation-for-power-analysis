@@ -38,7 +38,7 @@ def simulate_vt_data(n_stimuli, target_effect_size=0.4, seed=42):
                 conditions == 3   # AI-Human
             ],
             [
-                np.random.normal(mean_control, sd_residual, n_total_participants),
+                np.random.normal(mean_control, sd_residual,  n_total_participants),
                 np.random.normal(mean_human_ai, sd_residual, n_total_participants),
                 np.random.normal(mean_ai_human, sd_residual, n_total_participants)
             ]
